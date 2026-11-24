@@ -73,7 +73,7 @@ public class McpToolsConfig {
                                   "required": ["shopId"] }
                                 """),
                 (exchange, request) -> {
-                    Number shopId = (Number) request.getArguments().get("shopId");
+                    Number shopId = (Number) request.arguments().get("shopId");
                     Result result = shopService.queryById(shopId == null ? null : shopId.longValue());
                     return new McpSchema.CallToolResult(JSONUtil.toJsonStr(result), false);
                 }));
@@ -103,7 +103,7 @@ public class McpToolsConfig {
                                   "required": ["typeId", "x", "y"] }
                                 """),
                 (exchange, request) -> {
-                    Map<String, Object> args = request.getArguments();
+                    Map<String, Object> args = request.arguments();
                     Number typeId = (Number) args.get("typeId");
                     Number current = (Number) args.get("current");
                     Number x = (Number) args.get("x");
@@ -125,7 +125,7 @@ public class McpToolsConfig {
                                   "required": ["keyword"] }
                                 """),
                 (exchange, request) -> {
-                    String keyword = (String) request.getArguments().get("keyword");
+                    String keyword = (String) request.arguments().get("keyword");
                     List<Shop> list = shopService.query()
                             .like("name", keyword)
                             .last("limit 20")
@@ -160,7 +160,7 @@ public class McpToolsConfig {
                                   "required": ["shopId"] }
                                 """),
                 (exchange, request) -> {
-                    Number shopId = (Number) request.getArguments().get("shopId");
+                    Number shopId = (Number) request.arguments().get("shopId");
                     Result result = voucherService.queryVoucherOfShop(shopId == null ? null : shopId.longValue());
                     return new McpSchema.CallToolResult(JSONUtil.toJsonStr(result), false);
                 }));
@@ -179,7 +179,7 @@ public class McpToolsConfig {
                                   "required": ["userId"] }
                                 """),
                 (exchange, request) -> {
-                    Map<String, Object> args = request.getArguments();
+                    Map<String, Object> args = request.arguments();
                     Number userId = (Number) args.get("userId");
                     Number status = (Number) args.get("status");
                     if (userId == null || userId.longValue() <= 0) {
@@ -208,7 +208,7 @@ public class McpToolsConfig {
                                   "required": ["reservationId"] }
                                 """),
                 (exchange, request) -> {
-                    Number reservationId = (Number) request.getArguments().get("reservationId");
+                    Number reservationId = (Number) request.arguments().get("reservationId");
                     Reservation reservation = reservationService.getById(reservationId == null ? null : reservationId.longValue());
                     return new McpSchema.CallToolResult(JSONUtil.toJsonStr(
                             reservation == null ? Result.fail("预约不存在") : Result.ok(reservation)), false);
@@ -225,7 +225,7 @@ public class McpToolsConfig {
                                   "required": ["userId"] }
                                 """),
                 (exchange, request) -> {
-                    Number userId = (Number) request.getArguments().get("userId");
+                    Number userId = (Number) request.arguments().get("userId");
                     if (userId == null || userId.longValue() <= 0) {
                         return new McpSchema.CallToolResult(JSONUtil.toJsonStr(Result.fail("userId不能为空")), false);
                     }
@@ -250,7 +250,7 @@ public class McpToolsConfig {
                                   "required": ["userId", "shopId", "reservationTime", "numPeople"] }
                                 """),
                 (exchange, request) -> {
-                    Map<String, Object> args = request.getArguments();
+                    Map<String, Object> args = request.arguments();
                     Number userId = (Number) args.get("userId");
                     Number shopId = (Number) args.get("shopId");
                     String reservationTime = (String) args.get("reservationTime");
@@ -316,7 +316,7 @@ public class McpToolsConfig {
                                   "required": ["skillCode", "userInput", "userId"] }
                                 """),
                 (exchange, request) -> {
-                    Map<String, Object> args = request.getArguments();
+                    Map<String, Object> args = request.arguments();
                     String skillCode = (String) args.get("skillCode");
                     String userInput = (String) args.get("userInput");
                     Number userId = (Number) args.get("userId");

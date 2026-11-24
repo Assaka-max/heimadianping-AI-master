@@ -3,15 +3,15 @@ spring:
     name: hm-dianping
     #配置数据库连接信息
   datasource:
-    url: <configure-me>
+    url: jdbc:mysql://127.0.0.1:3306/hmdp?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: <configure-me>
-    password: <configure-me>
+    username: root
+    password: 123456
   data:
     redis:
-      host: <configure-me>
+      host: 127.0.0.1
       port: 6379
-      password: <configure-me>
+      password: 123456
       lettuce:
         pool:
           max-active: 10
@@ -37,14 +37,14 @@ server:
 langchain4j:
   open-ai:
     chat-model:
-      base-url: <configure-me>
-      api-key: <configure-me>
-      model-name: qwen-flash
+      base-url: https://api.deepseek.com
+      api-key: sk-117bcd8f352f4c378e1032848deae21f
+      model-name: deepseek-chat
       log-requests: true
       log-responses: true
     streaming-chat-model:
-      base-url: <configure-me>
-      api-key: <configure-me>
-      model-name: qwen-flash
+      base-url: https://api.deepseek.com
+      api-key: sk-117bcd8f352f4c378e1032848deae21f
+      model-name: deepseek-chat
       log-requests: true
       log-responses: true
